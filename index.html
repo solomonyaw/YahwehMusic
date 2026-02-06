@@ -40,6 +40,19 @@
       .waveform-bar {
         transition: height 0.2s ease;
       }
+      
+      /* Slider Custom Styles */
+      .slider-dot.active {
+        background-color: #fbbf24;
+        width: 1.5rem;
+      }
+      #slider-container {
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+      }
+      #slider-container::-webkit-scrollbar {
+        display: none;
+      }
     </style>
   <script type="importmap">
 {
@@ -88,7 +101,7 @@
 
     <main>
       <!-- Hero Section -->
-      <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0 scale-105 animate-[pulse_10s_infinite]" style="background-image: url('https://storage.googleapis.com/static.recommender.com/v2/generated-images/0628e833-289b-4f9e-a890-482f34f78330.png'); background-size: cover; background-position: center;">
           <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-slate-950"></div>
         </div>
@@ -104,12 +117,71 @@
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="#albums" class="w-full sm:w-auto px-10 py-4 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-full transition-all text-center tracking-widest uppercase">Listen Now</a>
-            <a href="#about" class="w-full sm:w-auto px-10 py-4 border-2 border-slate-700 hover:border-amber-500/50 text-slate-300 hover:text-amber-500 rounded-full transition-all text-center tracking-widest uppercase">Our Mission</a>
+            <a href="#slider-showcase" class="w-full sm:w-auto px-10 py-4 border-2 border-slate-700 hover:border-amber-500/50 text-slate-300 hover:text-amber-500 rounded-full transition-all text-center tracking-widest uppercase">Watch Featured</a>
           </div>
         </div>
 
-        <div id="hero-waveform" class="absolute bottom-0 left-0 w-full h-32 opacity-20 pointer-events-none flex items-end justify-center gap-1 h-full px-4">
+        <div id="hero-waveform" class="absolute bottom-0 left-0 w-full h-32 opacity-20 pointer-events-none flex items-end justify-center gap-1 px-4">
           <!-- Bars generated via JS -->
+        </div>
+      </section>
+
+      <!-- NEW SLIDER SECTION -->
+      <section id="slider-showcase" class="py-12 bg-slate-950 overflow-hidden px-4 md:px-6">
+        <div class="max-w-7xl mx-auto relative group">
+          <div class="absolute -inset-1 bg-amber-500/10 rounded-3xl blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-3xl border border-slate-800 shadow-2xl bg-slate-900">
+            
+            <!-- Slides Container -->
+            <div id="slider-container" class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar">
+              
+              <!-- Slide 1: Worship Image -->
+              <div class="min-w-full snap-start aspect-video md:aspect-[21/9] relative">
+                <img src="https://storage.googleapis.com/static.recommender.com/v2/generated-images/0628e833-289b-4f9e-a890-482f34f78330.png" class="w-full h-full object-cover" alt="Yahweh Music Worship Visual">
+                <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-slate-950 to-transparent">
+                  <h3 class="text-2xl font-display font-bold text-amber-500">Pure Atmosphere</h3>
+                  <p class="text-slate-300">Divine worship through algorithmic harmony.</p>
+                </div>
+              </div>
+
+              <!-- Slide 2: Branding Image -->
+              <div class="min-w-full snap-start aspect-video md:aspect-[21/9] relative">
+                <img src="https://picsum.photos/seed/spirit/1200/600" class="w-full h-full object-cover" alt="Holy Spirit Inspired Music">
+                <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-slate-950 to-transparent">
+                  <h3 class="text-2xl font-display font-bold text-amber-500">Divine Instruction</h3>
+                  <p class="text-slate-300">Technology used in obedience to the Spirit.</p>
+                </div>
+              </div>
+
+              <!-- Slide 3: YouTube Video -->
+              <div class="min-w-full snap-start aspect-video md:aspect-[21/9] bg-black flex items-center justify-center">
+                <iframe 
+                  class="w-full h-full" 
+                  src="https://www.youtube.com/embed/0ZWC3vfaK10?rel=0" 
+                  title="The Seven Church Ages" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              </div>
+
+            </div>
+
+            <!-- Navigation Controls -->
+            <button id="slider-prev" class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-950/50 border border-slate-700 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-amber-600 hover:text-slate-950">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button id="slider-next" class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-950/50 border border-slate-700 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-amber-600 hover:text-slate-950">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+
+            <!-- Dots -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+              <div class="slider-dot active w-3 h-3 rounded-full bg-slate-700 cursor-pointer transition-all duration-300" data-slide="0"></div>
+              <div class="slider-dot w-3 h-3 rounded-full bg-slate-700 cursor-pointer transition-all duration-300" data-slide="1"></div>
+              <div class="slider-dot w-3 h-3 rounded-full bg-slate-700 cursor-pointer transition-all duration-300" data-slide="2"></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -290,6 +362,7 @@
             <h4 class="text-slate-100 font-bold uppercase text-xs tracking-widest mb-6">Connect</h4>
             <ul class="text-slate-500 text-sm space-y-3">
               <li><a href="https://www.youtube.com/@YahwehMusic" class="hover:text-amber-500">YouTube</a></li>
+              <li><a href="https://web.facebook.com/profile.php?id=61567889971289&sk=directory_links" class="hover:text-amber-500">Facebook</a></li>
               <li><a href="https://www.github.com/solomonyaw" class="hover:text-amber-500">GitHub</a></li>
               <li><a href="http://www.handbillapp.com" class="hover:text-amber-500">Handbill</a></li>
             </ul>
@@ -347,6 +420,55 @@
           bar.style.height = `${Math.random() * 80 + 10}%`;
         });
       }, 500);
+
+      // 4. Slider Logic
+      const slider = document.getElementById('slider-container');
+      const prevBtn = document.getElementById('slider-prev');
+      const nextBtn = document.getElementById('slider-next');
+      const dots = document.querySelectorAll('.slider-dot');
+      let currentSlide = 0;
+      const slideCount = dots.length;
+
+      const updateSlider = (index) => {
+        currentSlide = index;
+        const offset = slider.clientWidth * currentSlide;
+        slider.scrollTo({ left: offset, behavior: 'smooth' });
+        
+        // Update Dots
+        dots.forEach((dot, i) => {
+          if (i === currentSlide) dot.classList.add('active');
+          else dot.classList.remove('active');
+        });
+      };
+
+      nextBtn.addEventListener('click', () => {
+        updateSlider((currentSlide + 1) % slideCount);
+      });
+
+      prevBtn.addEventListener('click', () => {
+        updateSlider((currentSlide - 1 + slideCount) % slideCount);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => updateSlider(i));
+      });
+
+      // Auto Play
+      let autoPlay = setInterval(() => {
+        updateSlider((currentSlide + 1) % slideCount);
+      }, 5000);
+
+      // Pause on interaction
+      const sliderWrap = document.querySelector('#slider-showcase .group');
+      sliderWrap.addEventListener('mouseenter', () => clearInterval(autoPlay));
+      sliderWrap.addEventListener('mouseleave', () => {
+        autoPlay = setInterval(() => {
+          updateSlider((currentSlide + 1) % slideCount);
+        }, 5000);
+      });
+
+      // Handle Resize
+      window.addEventListener('resize', () => updateSlider(currentSlide));
     </script>
   </body>
 </html>
