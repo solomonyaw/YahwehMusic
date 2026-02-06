@@ -5,8 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yahweh Music | AI-Powered Gospel</title>
+    <meta name="description" content="AI-Powered Gospel Music ministry created by Solomon Yaw Adeklo to spread the Word of God.">
+    
+    <!-- External Assets -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -25,18 +29,324 @@
         background: rgba(15, 23, 42, 0.8);
         backdrop-filter: blur(12px);
       }
+      /* Custom Animations */
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .waveform-bar {
+        transition: height 0.2s ease;
+      }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+    "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
 </script>
 </head>
-  <body>
-    <div id="root"></div>
+  <body class="selection:bg-amber-500/30">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-4">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <img src="https://storage.googleapis.com/static.recommender.com/v2/generated-images/7f191147-3801-49c0-994c-81329c0b1156.png" alt="Yahweh Music Logo" class="h-10 md:h-12 w-auto" />
+          <span class="hidden md:block font-display text-xl font-bold tracking-wider text-amber-500">YAHWEH MUSIC</span>
+        </div>
+        
+        <div class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-widest uppercase text-slate-300">
+          <a href="#about" class="hover:text-amber-500 transition-colors">About</a>
+          <a href="#creator" class="hover:text-amber-500 transition-colors">Creator</a>
+          <a href="#albums" class="hover:text-amber-500 transition-colors">Albums</a>
+          <a href="#upcoming" class="hover:text-amber-500 transition-colors">New Release</a>
+          <button class="px-6 py-2 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-full transition-all">
+            SUBSCRIBE
+          </button>
+        </div>
+
+        <button id="mobile-menu-btn" class="lg:hidden text-amber-500 p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-slate-950/95 border-b border-slate-800 p-6 space-y-4 text-center">
+        <a href="#about" class="block text-slate-300 hover:text-amber-500">About</a>
+        <a href="#creator" class="block text-slate-300 hover:text-amber-500">Creator</a>
+        <a href="#albums" class="block text-slate-300 hover:text-amber-500">Albums</a>
+        <a href="#upcoming" class="block text-slate-300 hover:text-amber-500">New Release</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 scale-105 animate-[pulse_10s_infinite]" style="background-image: url('https://storage.googleapis.com/static.recommender.com/v2/generated-images/0628e833-289b-4f9e-a890-482f34f78330.png'); background-size: cover; background-position: center;">
+          <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-slate-950"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <div class="mb-6 inline-block px-4 py-1 border border-amber-500/30 rounded-full bg-amber-500/10 text-amber-400 text-xs md:text-sm font-bold tracking-[0.3em] uppercase">
+            Faith • Music • Intelligence
+          </div>
+          <h1 class="font-display text-6xl md:text-9xl font-bold mb-4 gold-gradient drop-shadow-2xl">Yahweh Music</h1>
+          <p class="text-xl md:text-3xl italic font-light text-slate-300 mb-8 tracking-wide">AI-Powered Gospel Music for God’s Glory</p>
+          <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            Created by Solomon Yaw Adeklo. Harnessing the power of technology to spread the pure and unadulterated Word of God through transformative worship.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#albums" class="w-full sm:w-auto px-10 py-4 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-full transition-all text-center tracking-widest uppercase">Listen Now</a>
+            <a href="#about" class="w-full sm:w-auto px-10 py-4 border-2 border-slate-700 hover:border-amber-500/50 text-slate-300 hover:text-amber-500 rounded-full transition-all text-center tracking-widest uppercase">Our Mission</a>
+          </div>
+        </div>
+
+        <div id="hero-waveform" class="absolute bottom-0 left-0 w-full h-32 opacity-20 pointer-events-none flex items-end justify-center gap-1 h-full px-4">
+          <!-- Bars generated via JS -->
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-24 bg-slate-950 relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+              <h2 class="text-4xl md:text-5xl font-display font-bold gold-gradient inline-block">The Vision</h2>
+              <p class="text-xl text-slate-300 leading-relaxed font-light">
+                Yahweh Music is dedicated to glorifying God through the innovative application of Artificial Intelligence, spreading His Word without compromise.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="p-2 bg-amber-600/20 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div>
+                  <div>
+                    <h4 class="text-lg font-bold text-slate-200">Uncompromised Truth</h4>
+                    <p class="text-slate-400">Every lyric and melody aligns with the purity of the Gospel.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="p-2 bg-amber-600/20 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div>
+                  <div>
+                    <h4 class="text-lg font-bold text-slate-200">Digital Evangelism</h4>
+                    <p class="text-slate-400">Creating spoken word, teaching-inspired albums, and soulful worship.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-2xl text-center space-y-6">
+              <h3 class="text-2xl font-bold text-amber-500">Pure Word. Modern Reach.</h3>
+              <p class="text-slate-400 font-light italic text-lg leading-relaxed">
+                "Go ye into all the world, and preach the gospel to every creature."<br>— Mark 16:15
+              </p>
+              <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+              <p class="text-sm text-slate-500 uppercase tracking-widest">Soli Deo Gloria</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Creator Section -->
+      <section id="creator" class="py-24 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+          <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
+              <div class="absolute inset-0 border-4 border-amber-500/30 rounded-3xl rotate-6"></div>
+              <img src="https://picsum.photos/seed/solomon/400/400" alt="Solomon Yaw Adeklo" class="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" />
+            </div>
+            <div class="flex-1 space-y-6 text-center lg:text-left">
+              <h2 class="text-4xl font-display font-bold text-slate-100">About the Creator</h2>
+              <h3 class="text-2xl font-bold text-amber-500">Solomon Yaw Adeklo</h3>
+              <p class="text-slate-300 text-lg leading-relaxed">
+                Solomon is a software developer and AI enthusiast graduated from Valley View University. Inspired by God, he embraced AI as a tool for ministry. He is also the Co-Founder of <a href="http://www.handbillapp.com" target="_blank" class="text-amber-500 underline">Handbill</a>.
+              </p>
+              <p class="text-slate-400 leading-relaxed italic">
+                "Through Yahweh Music, I use technology in obedience to God's calling, reaching hearts beyond traditional boundaries."
+              </p>
+              <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-4">
+                <a href="https://www.github.com/solomonyaw" target="_blank" class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-lg hover:border-amber-500 transition-all">GitHub Profile</a>
+                <a href="http://www.handbillapp.com" target="_blank" class="px-6 py-3 bg-amber-600/10 border border-amber-600/30 text-amber-400 rounded-lg hover:bg-amber-600/20 transition-all">Handbill App</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Albums Section -->
+      <section id="albums" class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+          <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-6xl font-display font-bold gold-gradient">Albums by Yahweh Music</h2>
+            <p class="mt-4 text-slate-500 uppercase tracking-widest">Released for the Kingdom</p>
+          </div>
+
+          <!-- Album 1: Grace and Glory -->
+          <div class="grid lg:grid-cols-2 gap-12 items-center mb-32">
+            <div class="space-y-6">
+              <h3 class="text-3xl font-display font-bold text-slate-100">01. Grace and Glory</h3>
+              <p class="text-slate-400 text-lg font-light leading-relaxed">
+                An atmospheric journey through worship and praise, capturing the majestic essence of God's unfailing grace. This album blends soaring AI melodies with profound scriptural truths.
+              </p>
+              <a href="https://www.youtube.com/watch?v=d1d82CIgDk8&list=PLRIuMRLPIA9Uuu9RZxwFMACm3scC5J6DX" target="_blank" class="inline-block text-amber-500 font-bold hover:translate-x-2 transition-transform">→ Watch Full Playlist</a>
+            </div>
+            <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/d1d82CIgDk8" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Album 2: Holy Sweat -->
+          <div class="grid lg:grid-cols-2 gap-12 items-center mb-32 lg:flex-row-reverse">
+            <div class="lg:order-2 space-y-6">
+              <h3 class="text-3xl font-display font-bold text-slate-100">02. Holy Sweat</h3>
+              <p class="text-slate-400 text-lg font-light leading-relaxed">
+                Inspired by Tim Hansel’s book, this album challenges listeners to move beyond passive faith. It reflects the call to turn belief into action, embracing the "holy sweat" that comes from fully committing one's life to God.
+              </p>
+              <div class="flex items-center gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl">
+                <img src="https://picsum.photos/seed/book1/400/600" class="h-16 rounded" alt="Book Cover">
+                <span class="text-sm text-slate-400">Inspired by Holy Sweat by Tim Hansel</span>
+              </div>
+            </div>
+            <div class="lg:order-1 aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/DlzGD_6u52k" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Album 3: The Seven Church Ages -->
+          <div class="grid lg:grid-cols-2 gap-12 items-center mb-32">
+            <div class="space-y-6">
+              <h3 class="text-3xl font-display font-bold text-slate-100">03. The Seven Church Ages</h3>
+              <p class="text-slate-400 text-lg font-light leading-relaxed">
+                Inspired by William Branham’s teachings. Through music and spoken word, it artisticly reflects the messages given to the seven church ages as recorded in Revelation, pointing listeners back to Christ.
+              </p>
+              <div class="flex items-center gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl">
+                <img src="https://picsum.photos/seed/book2/400/600" class="h-16 rounded" alt="Book Cover">
+                <span class="text-sm text-slate-400">Inspired by William Branham's Exposition</span>
+              </div>
+            </div>
+            <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/0ZWC3vfaK10" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Upcoming Section -->
+      <section id="upcoming" class="py-24 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+          <div class="bg-glass border border-amber-500/30 rounded-3xl p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12 relative overflow-hidden">
+            <div class="w-full lg:w-1/3 text-center">
+              <img src="https://picsum.photos/seed/sin/600/600" alt="Upcoming single" class="w-full aspect-square object-cover rounded-2xl shadow-2xl mb-8">
+              <h4 class="text-amber-500 uppercase tracking-widest text-sm mb-2">Upcoming Single</h4>
+              <h3 class="text-3xl font-display font-bold text-slate-100">The Original Sin</h3>
+            </div>
+            <div class="flex-1 text-center lg:text-left space-y-8">
+              <h4 class="text-2xl font-bold text-slate-100">Divine Revelations through Sound</h4>
+              <p class="text-slate-400 text-lg font-light leading-relaxed">
+                Experience the next chapter. "The Original Sin" explores the foundational theology of faith through an immersive soundscape of spoken word and AI orchestration.
+              </p>
+              <div class="p-8 border-2 border-dashed border-slate-700 rounded-2xl bg-slate-950/50">
+                <p class="text-amber-500 font-bold uppercase tracking-widest text-sm">Coming Soon – Stay Tuned</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="py-24 bg-slate-950 text-center">
+        <div class="max-w-2xl mx-auto px-4">
+          <h2 class="text-4xl font-display font-bold mb-6">Join the Community</h2>
+          <p class="text-slate-400 mb-10 leading-relaxed font-light">Be the first to hear new AI-generated worship sessions and teaching devotionals from Solomon Yaw Adeklo.</p>
+          <form class="flex flex-col sm:flex-row gap-4" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Your Email Address" class="flex-1 bg-slate-900 border border-slate-800 rounded-full px-6 py-4 text-slate-100 focus:outline-none focus:border-amber-500" required>
+            <button type="submit" class="px-10 py-4 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-full transition-all">SUBSCRIBE</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
+      <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div class="space-y-6">
+            <img src="https://storage.googleapis.com/static.recommender.com/v2/generated-images/7f191147-3801-49c0-994c-81329c0b1156.png" class="h-10" alt="Yahweh Logo">
+            <p class="text-slate-500 text-sm italic leading-relaxed">Using AI to glorify God and spread His pure Word to the digital world.</p>
+          </div>
+          <div>
+            <h4 class="text-slate-100 font-bold uppercase text-xs tracking-widest mb-6">Explore</h4>
+            <ul class="text-slate-500 text-sm space-y-3">
+              <li><a href="#about" class="hover:text-amber-500">About Ministry</a></li>
+              <li><a href="#albums" class="hover:text-amber-500">Music Archive</a></li>
+              <li><a href="#upcoming" class="hover:text-amber-500">Latest Release</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-slate-100 font-bold uppercase text-xs tracking-widest mb-6">Connect</h4>
+            <ul class="text-slate-500 text-sm space-y-3">
+              <li><a href="https://www.youtube.com/@YahwehMusic" class="hover:text-amber-500">YouTube</a></li>
+              <li><a href="https://www.github.com/solomonyaw" class="hover:text-amber-500">GitHub</a></li>
+              <li><a href="http://www.handbillapp.com" class="hover:text-amber-500">Handbill</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-slate-100 font-bold uppercase text-xs tracking-widest mb-6">Scripture</h4>
+            <p class="text-slate-500 text-sm italic">"Sing unto him, sing psalms unto him: talk ye of all his wondrous works." — 1 Chron 16:9</p>
+          </div>
+        </div>
+        <div class="pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center text-slate-600 text-xs gap-4 uppercase tracking-widest">
+          <p>&copy; 2024 Yahweh Music. Created by Solomon Yaw Adeklo.</p>
+          <p>Soli Deo Gloria</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Logic -->
+    <script>
+      // 1. Navbar Scroll Effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('bg-slate-950/90', 'shadow-2xl', 'backdrop-blur-lg', 'py-2');
+          navbar.classList.remove('bg-transparent', 'py-4');
+        } else {
+          navbar.classList.remove('bg-slate-950/90', 'shadow-2xl', 'backdrop-blur-lg', 'py-2');
+          navbar.classList.add('bg-transparent', 'py-4');
+        }
+      });
+
+      // 2. Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      // Close mobile menu on link click
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+
+      // 3. Hero Waveform Generation
+      const waveform = document.getElementById('hero-waveform');
+      const BAR_COUNT = 40;
+      for (let i = 0; i < BAR_COUNT; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'w-1 bg-amber-500 waveform-bar opacity-50';
+        bar.style.height = `${Math.random() * 80 + 10}%`;
+        waveform.appendChild(bar);
+      }
+      
+      // Animate waveform bars randomly
+      setInterval(() => {
+        document.querySelectorAll('.waveform-bar').forEach(bar => {
+          bar.style.height = `${Math.random() * 80 + 10}%`;
+        });
+      }, 500);
+    </script>
   </body>
 </html>
