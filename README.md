@@ -19,11 +19,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1PEKLEFz4aGKIrAlDV1L3PQ
 3. Run the app:
    `npm run dev`
 
-   Love this direction, Solomon — a README in **HTML** is perfect for GitHub and for clearly expressing the vision 🙌
-Below is a **clean, well-structured HTML README** you can drop directly into your repository.
-
-You can save this as **`README.html`** or paste it into a GitHub README that supports HTML rendering.
-
+   
 ---
 
 
