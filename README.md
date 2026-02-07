@@ -28,7 +28,7 @@ You can save this as **`README.html`** or paste it into a GitHub README that sup
 
 
 # 🎵 Yahweh Music
-<img src="cover.png" alt="A description of the image" width="60px"  height="60px">
+<img src="cover.png" alt="A description of the image" width="250px"  height="250px">
 
 
 **Yahweh Music** is a gospel music platform dedicated to spreading the **pure and unadulterated Word of God** through music, using **Artificial Intelligence** as a creative tool.
