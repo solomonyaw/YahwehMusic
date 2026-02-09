@@ -125,6 +125,7 @@
           <a href="#albums" class="hover:text-amber-500 transition-colors">Albums</a>
           <a href="#books" class="hover:text-amber-500 transition-colors">Books</a>
           <a href="#upcoming" class="hover:text-amber-500 transition-colors">New Release</a>
+          <button onclick="toggleDonation(true)" class="hover:text-amber-500 transition-colors">Donate</button>
           <a href="https://www.youtube.com/@YahweMusic" class="hover:text-amber-500 transition-colors"><button class="px-6 py-2 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-full transition-all">
             SUBSCRIBE
           </button></a>
@@ -144,8 +145,142 @@
         <a href="#albums" class="block text-slate-300 hover:text-amber-500">Albums</a>
         <a href="#books" class="hover:text-amber-500 transition-colors">Books</a>
         <a href="#upcoming" class="block text-slate-300 hover:text-amber-500">New Release</a>
+        <button onclick="toggleDonation(true)" class="block w-full text-slate-300 hover:text-amber-500 uppercase tracking-widest text-sm">Donate</button>
       </div>
     </nav>
+
+     <!-- DONATION OVERLAY VIEW -->
+    <div id="donation-view" class="fixed inset-0 z-[100] bg-slate-950 overflow-y-auto invisible opacity-0">
+      <div class="min-h-screen py-20 px-4 md:px-6 relative">
+        <button onclick="toggleDonation(false)" class="fixed top-6 right-6 p-4 rounded-full bg-slate-900 border border-slate-800 text-amber-500 hover:bg-amber-600 hover:text-slate-950 transition-all z-[110]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+
+        <div class="max-w-5xl mx-auto space-y-16">
+          <!-- Introduction -->
+          <div class="text-center space-y-6">
+            <h1 class="text-5xl md:text-7xl font-display font-bold gold-gradient uppercase">Donate to Yahweh Music</h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
+              Yahweh Music is a ministry dedicated to spreading the pure and unadulterated Word of God through music and technology. Your support enables us to touch lives globally through spiritual art and outreach.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12">
+            <!-- International Payments -->
+            <div class="space-y-8">
+              <div class="flex items-center gap-4">
+                <div class="p-3 bg-amber-600/10 border border-amber-600/30 rounded-xl text-amber-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <h2 class="text-2xl font-display font-bold text-slate-100">International Payments</h2>
+              </div>
+
+              <!-- USDT -->
+              <div class="bg-slate-900/50 border border-slate-800 p-8 rounded-3xl space-y-6">
+                <div class="flex justify-between items-start">
+                  <h3 class="text-xl font-bold text-amber-500">USDT (Crypto)</h3>
+                  <span class="text-xs bg-amber-600/20 text-amber-400 px-3 py-1 rounded-full uppercase tracking-tighter">BEP20 Network</span>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 break-all font-mono text-sm text-slate-400">
+                  0x9997b84f3ce400a6783f2509c20b541abb0bb050
+                </div>
+                <div class="aspect-square w-32 bg-slate-800 mx-auto rounded-lg flex items-center justify-center text-slate-600 text-[10px] text-center p-4">
+                  QR CODE PLACEHOLDER
+                </div>
+                <p class="text-xs text-slate-500 italic text-center">Note: Confirm the network is BNB Smart Chain (BEP20) before sending.</p>
+              </div>
+
+              <!-- US Bank Transfer -->
+              <div class="bg-slate-900/50 border border-slate-800 p-8 rounded-3xl space-y-4">
+                <h3 class="text-xl font-bold text-amber-500">U.S. Bank Transfer</h3>
+                <div class="grid grid-cols-2 gap-y-3 text-sm">
+                  <span class="text-slate-500">Account Holder</span> <span class="text-slate-200">Solomon Adeklo</span>
+                  <span class="text-slate-500">Bank Name</span> <span class="text-slate-200">Lead Bank</span>
+                  <span class="text-slate-500">Account No</span> <span class="text-slate-200">217373432926</span>
+                  <span class="text-slate-500">ACH Routing</span> <span class="text-slate-200">101019644</span>
+                  <span class="text-slate-500">Wire Routing</span> <span class="text-slate-200">101019644</span>
+                  <span class="text-slate-500">Country</span> <span class="text-slate-200">USA</span>
+                </div>
+                <p class="text-[10px] text-slate-600 pt-2">1801 Main St., Kansas City, MO 64108</p>
+              </div>
+            </div>
+
+            <!-- Local Ghana Payments -->
+            <div class="space-y-8">
+              <div class="flex items-center gap-4">
+                <div class="p-3 bg-amber-600/10 border border-amber-600/30 rounded-xl text-amber-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <h2 class="text-2xl font-display font-bold text-slate-100">Local Ghanaian Payments</h2>
+              </div>
+
+              <!-- MTN MoMo -->
+              <div class="bg-slate-900/50 border border-slate-800 p-8 rounded-3xl space-y-6">
+                <div class="flex justify-between items-center">
+                  <h3 class="text-xl font-bold text-amber-500 uppercase tracking-widest">MTN MoMo</h3>
+                  <div class="w-10 h-6 bg-yellow-400 rounded"></div>
+                </div>
+                <div class="space-y-3">
+                  <p class="text-sm font-bold text-slate-300">Transfer Steps:</p>
+                  <ul class="text-xs text-slate-400 space-y-2 list-decimal list-inside">
+                    <li>Dial *170#</li>
+                    <li>Select Transfer Money (1)</li>
+                    <li>Select MoMo User (1)</li>
+                    <li>Recipient: <span class="text-amber-500 font-bold">0540834343</span></li>
+                    <li>Enter Amount and your PIN</li>
+                  </ul>
+                </div>
+                <div class="h-20 bg-slate-950 rounded-xl flex items-center justify-center text-slate-700 text-[10px] italic">
+                  MoMo Screenshot Placeholder
+                </div>
+              </div>
+
+              <!-- Fidelity Bank -->
+              <div class="bg-slate-900/50 border border-slate-800 p-8 rounded-3xl space-y-4">
+                <h3 class="text-xl font-bold text-amber-500">Fidelity Bank Ghana</h3>
+                <div class="grid grid-cols-2 gap-y-3 text-sm">
+                  <span class="text-slate-500">Account Name</span> <span class="text-slate-200">Solomon Yaw Adeklo</span>
+                  <span class="text-slate-500">Bank Name</span> <span class="text-slate-200 font-bold uppercase text-[10px]">Fidelity Bank Ghana Ltd</span>
+                  <span class="text-slate-500">Account No</span> <span class="text-slate-200">1400033326118</span>
+                  <span class="text-slate-500">Branch</span> <span class="text-slate-200">Ridge Tower</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Usage & Transparency -->
+          <div class="py-16 border-t border-slate-900">
+            <h2 class="text-3xl font-display font-bold text-center mb-12 text-slate-100 uppercase tracking-widest">How Your Donation Is Used</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="p-6 bg-slate-900/30 rounded-2xl border border-slate-800/50 text-center">
+                <div class="text-amber-500 mb-4 inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
+                </div>
+                <h4 class="font-bold text-slate-200 mb-2 uppercase text-sm">Gospel Production</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Funding high-quality gospel music creation and digital distribution.</p>
+              </div>
+              <div class="p-6 bg-slate-900/30 rounded-2xl border border-slate-800/50 text-center">
+                <div class="text-amber-500 mb-4 inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                </div>
+                <h4 class="font-bold text-slate-200 mb-2 uppercase text-sm">Outreach Ministry</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Supporting humanitarian efforts and ministry tools infrastructure.</p>
+              </div>
+              <div class="p-6 bg-slate-900/30 rounded-2xl border border-slate-800/50 text-center">
+                <div class="text-amber-500 mb-4 inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                </div>
+                <h4 class="font-bold text-slate-200 mb-2 uppercase text-sm">AI Innovation</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Utilizing advanced technology to reach new souls globally.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center text-slate-600 text-sm italic font-light pb-10 uppercase tracking-widest">Soli Deo Gloria</p>
+        </div>
+      </div>
+    </div>
+
 
     <main>
       <!-- Hero Section -->
@@ -428,6 +563,27 @@
           </div>
         </div>
       </section>
+
+        <!-- SUPPORT SECTION (HOMEPAGE) -->
+      <section id="support" class="py-24 bg-slate-950 relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+          <div class="bg-gradient-to-br from-amber-600/5 to-slate-900 border border-amber-500/20 rounded-[3rem] p-12 md:p-20 text-center space-y-10">
+            <h2 class="text-4xl md:text-6xl font-display font-bold gold-gradient uppercase">Support Yahweh Music</h2>
+            <div class="max-w-2xl mx-auto space-y-6">
+              <p class="text-xl text-slate-300 font-light leading-relaxed italic">
+                "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver." — 2 Cor 9:7
+              </p>
+              <p class="text-slate-400 leading-relaxed">
+                Your seeds of faith help us propagate the gospel of Jesus Christ through AI-powered music, support humanitarian outreach, and maintain the infrastructure of this ministry.
+              </p>
+            </div>
+            <button onclick="toggleDonation(true)" class="px-12 py-5 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-full transition-all shadow-2xl shadow-amber-600/20 tracking-widest uppercase text-sm">
+              Donate Now
+            </button>
+          </div>
+        </div>
+      </section>
+
 
 
       <!-- Upcoming Section -->
