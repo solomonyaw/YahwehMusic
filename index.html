@@ -662,6 +662,20 @@
     </footer>
 
     <!-- Interactive Logic -->
+    <!-- Interactive Logic -->
+    <script>
+      // Navigation & Donation Toggle
+      function toggleDonation(show) {
+        const view = document.getElementById('donation-view');
+        if (show) {
+          view.classList.remove('invisible', 'opacity-0');
+          document.body.style.overflow = 'hidden';
+        } else {
+          view.classList.add('invisible', 'opacity-0');
+          document.body.style.overflow = '';
+        }
+      }
+
     <script>
       // 1. Navbar Scroll Effect
       const navbar = document.getElementById('navbar');
