@@ -709,6 +709,26 @@
     <!-- Interactive Logic -->
     <!-- Interactive Logic -->
     <script>
+
+       // Clipboard Copy Utility
+      function copyToClipboard(text, button) {
+        navigator.clipboard.writeText(text).then(() => {
+          const copyIcon = button.querySelector('#copy-icon');
+          const checkIcon = button.querySelector('#check-icon');
+          
+          // Toggle icons
+          copyIcon.classList.add('hidden');
+          checkIcon.classList.remove('hidden');
+          
+          // Reset after delay
+          setTimeout(() => {
+            copyIcon.classList.remove('hidden');
+            checkIcon.classList.add('hidden');
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+      }
       // Navigation & Donation Toggle
       function toggleDonation(show) {
         const view = document.getElementById('donation-view');
